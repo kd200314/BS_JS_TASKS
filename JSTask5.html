@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin-top: 40px;
+        }
+        .error {
+            color: red;
+        }
+
+        label, input[type="text"], input[type="email"], input[type="url"], textarea {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error" id="nameError">This field is required</span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error" id="emailError">Please enter a valid email</span>
+        </div>
+        <div>
+            <label for="website">Website:</label>
+            <input type="url" id="website" name="website" required>
+            <span class="error" id="websiteError">A valid URL is required</span>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <span class="error" id="messageError">This field is required</span>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        const form = document.getElementById("myForm");
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const websiteInput = document.getElementById("website");
+        const messageInput = document.getElementById("message");
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const websiteError = document.getElementById("websiteError");
+        const messageError = document.getElementById("messageError");
+
+        form.addEventListener("submit", function (e) {
+            let isValid = true;
+            if (nameInput.value.trim() === "") {
+                nameError.style.display = "inline";
+                isValid = false;
+            } else {
+                nameError.style.display = "none";
+            }
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(emailInput.value)) {
+                emailError.style.display = "inline";
+                isValid = false;
+            } else {
+                emailError.style.display = "none";
+            }
+            const websitePattern = /^(http|https):\/\/[^ "]+$/;
+            if (!websitePattern.test(websiteInput.value)) {
+                websiteError.style.display = "inline";
+                isValid = false;
+            } else {
+                websiteError.style.display = "none";
+            }
+            if (messageInput.value.trim() === "") {
+                messageError.style.display = "inline";
+                isValid = false;
+            } else {
+                messageError.style.display = "none";
+            }
+
+            if (!isValid) {
+                e.preventDefault(); 
+            }
+        });
+    </script>
+</body>
+</html>

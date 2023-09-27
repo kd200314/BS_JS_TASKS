@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body{
+            background: radial-gradient(yellow 30%, pink 70%);
+        }
+       table input[type=number],input[type=text],input[type=password],input[type=email]{
+        width:100%;
+        box-sizing: border-box;
+       }
+       table td p{
+        text-align: right;
+       }
+       table textarea{
+        box-sizing: border-box;
+        width: 100%;
+       }
+       table td span{
+        color: red;
+       }
+       table td button{
+        background-color: red;
+        color: white;
+        border-radius: 20px;
+       }
+    </style>
+</head>
+<body>
+    <div class="container-md">
+        <form>
+            <table class="table caption-top table-borderless">
+                <caption style="text-align: center;"><h2 style="color: blue;">Registration form</h2></caption>
+                <tr>
+                    <td><p>First Name</p></td>
+                    <td><input type="text" id="fn" onkeydown="checkfn()"></td>
+                    <td><span id="fnid">POOR</span></td>
+                </tr>
+                <tr>
+                    <td><p>Last Name</p></td>
+                    <td><input type="text" id="ln" onkeyup="checkln()"></td>
+                    <td><span id="lnid">POOR</span></td>
+                </tr>
+                <tr>
+                    <td><p>Email</p></td>
+                    <td><input type="email" id="mail" onkeyup="checkmail()"></td>
+                    <td><span id="mailid">POOR</span></td>
+                </tr>
+                <tr>
+                    <td><p>Password</p></td>
+                    <td><input type="password" id="password" onkeyup="checkpassword()"></td>
+                    <td><span id="passid">POOR</span></td>
+                </tr>
+                <tr>
+                    <td><p>Re-enter password</p></td>
+                    <td><input type="password" id="repassword" onkeyup="checkrepassword()"></td>
+                    <td><span id="repassid">POOR OR MISMATCH</span></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" for="gender"><p>Gender</p></td>
+                    <td style="text-align: left;"><input type="radio" value="Male" name="gender" checked>Male</td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;"><input type="radio" value="Female" name="gender">Female</td>
+                </tr>
+                <tr>
+                    <td><p>Age</p></td>
+                    <td><input type="number" id="age" onkeyup="checkage()"></td>
+                    <td><span id="ageid">POOR</span></td>
+                </tr>
+                <tr>
+                    <td><p>Phone Number</p></td>
+                    <td><input type="number" id="pno" onkeyup="checkpno()"></td>
+                    <td><span id="pnoid">POOR</span></td>
+                </tr>
+                <tr>
+                    <td><p>Address</p></td>
+                    <td ><textarea onkeyup="checkadd()" id="add"></textarea></td>
+                    <td><span id="addid">POOR</span></td>
+                </tr>
+                <tr>
+                    <td><p>State</p></td>
+                    <td><input type="text" id="state" onkeyup="checkstate()"></td>
+                    <td><span id="stateid">POOR</span></td>
+                </tr>
+                <tr >
+                    <td><p>Country</p></td>
+                    <td >
+                        <select>
+                            <option>choose your country</option>
+                            <option value="India">India</option>
+                            <option value="Japan">Japan</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr >
+                    <td><p>Languages known</p></td>
+                    <td >
+                        <input type="checkbox">English
+                        <input type="checkbox">Kannada
+                        <input type="checkbox">Hindi
+                        <input type="checkbox">Telugu
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <input type="checkbox" checked>Hereby I declare all the given details are true
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="padding-left: 70%;">
+                        Log in to <a href="https://ethnus.com/">Ethnus</a> website
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;"><button type="submit">Register</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        function checkfn(){
+    var fn=document.getElementById('fn').value;
+    if(fn.length<5){
+        document.getElementById('fnid').innerHTML='POOR';
+        document.getElementById('fnid').style.color='red';
+    }
+    else{
+        document.getElementById('fnid').innerHTML='Good';
+        document.getElementById('fnid').style.color='green';
+    }
+}
+function checkln(){
+    var ln=document.getElementById('ln').value;
+    if(ln.length<5){
+        document.getElementById('lnid').innerHTML='POOR';
+        document.getElementById('lnid').style.color='red';
+    }
+    else{
+        document.getElementById('lnid').innerHTML='Good';
+        document.getElementById('lnid').style.color='green';
+    }
+}
+function checkmail(){
+    var mail=document.getElementById('mail').value;
+    if(mail.length<5){
+        document.getElementById('mailid').innerHTML='POOR';
+        document.getElementById('mailpop').style.color='red';
+    }
+    else{
+        document.getElementById('mailid').innerHTML='Good';
+        document.getElementById('mailid').style.color='green';
+    }
+}
+function checkpassword(){
+    var pass=document.getElementById('password').value;
+    if(pass.length<6){
+        document.getElementById('passid').innerHTML='POOR';
+        document.getElementById('passid').style.color='red';
+    }
+    else{
+        document.getElementById('passid').innerHTML='Good';
+        document.getElementById('passid').style.color='green';
+    }
+}
+function checkrepassword(){
+    var repass=document.getElementById('repassword').value;
+    if(repass.length<6){
+        document.getElementById('repassid').innerHTML='POOR OR MISMATCH';
+        document.getElementById('repassid').style.color='red';
+    }
+    else{
+        document.getElementById('repassid').innerHTML='Good';
+        document.getElementById('repassid').style.color='green';
+    }
+}
+function checkage(){
+    var age=document.getElementById('age').value;
+    if(age.length<1){
+        document.getElementById('ageid').innerHTML='POOR';
+        document.getElementById('ageid').style.color='red';
+    }
+    else{
+        document.getElementById('ageid').innerHTML='Good';
+        document.getElementById('ageid').style.color='green';
+    }
+}
+function checkpno(){
+    var phno=document.getElementById('pno').value;
+    if(phno.length<10){
+        document.getElementById('pnoid').innerHTML='POOR';
+        document.getElementById('pnoid').style.color='red';
+    }
+    else{
+        document.getElementById('pnoid').innerHTML='Good';
+        document.getElementById('pnoid').style.color='green';
+    }
+}
+function checkadd(){
+    var add=document.getElementById('add').value;
+    if(add.length<15){
+        document.getElementById('addid').innerHTML='POOR';
+        document.getElementById('addid').style.color='red';
+    }
+    else{
+        document.getElementById('addid').innerHTML='Good';
+        document.getElementById('addid').style.color='green';
+    }
+}
+function checkstate(){
+    var state=document.getElementById('state').value;
+    if(state.length<3){
+        document.getElementById('stateid').innerHTML='POOR';
+        document.getElementById('stateid').style.color='red';
+    }
+    else{
+        document.getElementById('stateid').innerHTML='Good';
+        document.getElementById('stateid').style.color='green';
+    }
+}
+    </script>
+</body>
+</html>
